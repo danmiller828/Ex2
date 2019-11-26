@@ -21,8 +21,7 @@ int main(int argc, char *argv[])
 	FILE *fptr_studentIds = NULL, *fptr_final_grades = NULL;
 	if (argc != 2)
 	{
-		printf("Not enough arguments passed. Exiting...");
-		exit(ARG_EXIT_CODE);
+		goto num_of_args_error;
 	}
 	sprintf(path_to_studentIds, "%s//studentIds.txt", argv[1]);
 	sprintf(path_to_final_grades, "%s//final_grades.txt", argv[1]);
@@ -37,6 +36,10 @@ int main(int argc, char *argv[])
 	int grades_calculated_flag = Calculate_Grades(path_list);
 	Collect_Grades(fptr_final_grades);
 	return 0;
+num_of_args_error:
+	printf("Not enough arguments passed. Exiting...");
+	return(ARG_EXIT_CODE);
+
 }
 
 
